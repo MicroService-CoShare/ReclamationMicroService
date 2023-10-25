@@ -20,10 +20,24 @@ public class Reclamation implements Serializable {
     @Id
     @GeneratedValue
     private int id ;
-    private String label,description;
-    public Reclamation(String label){
-        super();
-        this.label = label ;
+    private String titre;
+    private String description;
+    private Statut statut;
+    private Priorite priorite;
+    private String notesInternes;
+    private String feedbackUtilisateur;
+    private TypeReclamation typeReclamation;
+    public enum Statut {
+        OUVERT, FERME, EN_ATTENTE
     }
+
+    public enum Priorite {
+        HAUTE, MOYENNE, BASSE
+    }
+
+    public enum TypeReclamation {
+        TECHNIQUE, SERVICE_CLIENT, AUTRE
+    }
+
 
 }
