@@ -25,8 +25,8 @@ public class ReclamationRestApi {
     @RequestMapping("/hello")
     @RolesAllowed("user")
     public String sayHello(){
-        System.out.println(title);
-        return title;
+        System.out.println("title");
+        return "title";
     }
      @RequestMapping("/admin")
     @RolesAllowed("admin")
