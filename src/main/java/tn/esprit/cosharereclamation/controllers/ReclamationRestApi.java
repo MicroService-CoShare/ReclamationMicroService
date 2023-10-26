@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.cosharereclamation.entities.Reclamation;
 import tn.esprit.cosharereclamation.services.ReclamationService;
-
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -20,6 +20,20 @@ public class ReclamationRestApi {
     @Autowired
     private ReclamationService reclamationService;
 
+    private String admin="hello , im admin";
+
+    @RequestMapping("/hello")
+    @RolesAllowed("user")
+    public String sayHello(){
+        System.out.println(title);
+        return title;
+    }
+     @RequestMapping("/admin")
+    @RolesAllowed("admin")
+    public String sayAdmin(){
+        System.out.println(admin);
+        return admin;
+    }
     @GetMapping
     public ResponseEntity<List<Reclamation>> getAllReclamations() {
         return new ResponseEntity<>(reclamationService.getAllReclamations(), HttpStatus.OK);
